@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Расписание ИИ{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Ваше расписание на ближайшие 24 часа</h2>
+
+{% if scheduled_tasks %}
+<div class="card">
+    <div class="card-header">Предложенное расписание</div>
+    <ul class="list-group list-group-flush">
+        {% for task_entry in scheduled_tasks %}
+        <li class="list-group-item">
+            <strong>{{ task_entry.task_title }}</strong>
+
+
+            <small class="text-muted">
+                <i class="fas fa-calendar-alt"></i> {{ task_entry.start_time.strftime('%Y-%m-%d %H:%M') }} - {{
+                task_entry.end_time.strftime('%H:%M') }}
+            </small>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+<div class="alert alert-info" role="alert">
+    ИИ не смог составить расписание или у вас нет невыполненных задач.
+</div>
+{% endif %}
+{% endblock %}

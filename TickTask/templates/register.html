@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card mt-5">
+            <div class="card-header text-center">
+                <h3>Регистрация в TickTask</h3>
+            </div>
+            <div class="card-body">
+                <form action="{{ url_for('register') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Имя пользователя</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                               value="{{ form_data.username if form_data else '' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">Повторите пароль</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                               required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Зарегистрироваться</button>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <p class="mb-0">Уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
