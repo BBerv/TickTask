@@ -1,0 +1,63 @@
+/* Общие настройки страницы */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Стилизация карточек задач */
+.card {
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+/* Блок с ИИ-советом */
+.ai-advice-box {
+    background-color: #eef6ff;
+    border-left: 4px solid #0dcaf0;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Стили для форм (регистрация/логин) */
+.form-signin {
+    max-width: 400px;
+    padding: 15px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Кнопки */
+.btn-primary {
+    border-radius: 8px;
+    padding: 8px 20px;
+}
+
+/* Статус задачи */
+.status-finished {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 576px) {
+    .container {
+        padding: 10px;
+    }
+}

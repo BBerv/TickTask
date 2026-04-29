@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if reminders %}
+<div class="alert alert-warning shadow-sm border-0">
+    ⚠️ <strong>Срочные дела:</strong> У вас {{ reminders|length }} задач с 3 звездами важности!
+</div>
+{% endif %}
+
+<div class="mb-4">
+    <a href="/add_task" class="btn btn-primary px-4 shadow-sm">➕ Создать</a>
+    <a href="/plan" class="btn btn-dark px-4 shadow-sm">🤖 План дня</a>
+</div>
+
+<div class="row">
+    {% for item in tasks %}
+    <div class="col-md-6 mb-4">
+        <div class="card border-0 shadow-sm {{ 'bg-light' if item.is_finished }}">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-secondary opacity-75">{{ item.category }}</span>
+                    <!-- Звезды важности -->
+                    <span class="text-warning">
+                        {% if item.priority == 3 %} ⭐⭐⭐
+                        {% elif item.priority == 2 %} ⭐⭐
+                        {% else %} ⭐
+                        {% endif %}
+                    </span>
+                </div>
+
+                <h5 class="card-title {{ 'text-decoration-line-through text-muted' if item.is_finished }}">
+                    {{ item.title }}
+                </h5>
+
+                <div class="small text-muted mb-3">
+                    📅 Дедлайн: <strong>{{ item.due_date }}</strong> | ⏳ Время: <strong>{{ item.duration }}</strong>
+                </div>
+
+                <p class="mb-2">
+                  <button class="btn btn-link btn-sm p-0 text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#col{{ item.id }}">
+                    Показать описание
+                  </button>
+                </p>
+                <div class="collapse mb-3" id="col{{ item.id }}">
+                  <div class="card card-body border-0 bg-light p-2 small">
+                    {{ item.content if item.content else 'Нет подробностей' }}
+                  </div>
+                </div>
+
+                {% if not item.is_finished %}
+                    <a href="/complete/{{ item.id }}" class="btn btn-success btn-sm w-100">Завершить</a>
+                {% else %}
+                    <div class="text-center text-success small fw-bold mt-2">✓ Выполнено</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

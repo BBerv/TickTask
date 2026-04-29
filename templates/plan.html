@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow">
+    <div class="card-body">
+        <h2 class="card-title">🤖 Умное расписание от Llama 3</h2>
+        <hr>
+        <div class="p-3 bg-light rounded" style="white-space: pre-wrap;">
+            {{ plan }}
+        </div>
+        <a href="/" class="btn btn-primary mt-4">Вернуться к задачам</a>
+    </div>
+</div>
+{% endblock %}

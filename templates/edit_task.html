@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow border-0 p-4">
+            <h3 class="text-center mb-4">TickTask: Новая задача</h3>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Что нужно сделать?</label>
+                    <input type="text" class="form-control" name="title" required>
+                </div>
+
+                <!-- НОВОЕ: Поле выбора дедлайна -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Срок выполнения (Дедлайн)</label>
+                    <input type="date" class="form-control" name="due_date" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Описание</label>
+                    <textarea class="form-control" name="content" rows="3"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Прикрепить файл</label>
+                    <input type="file" class="form-control" name="file">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100 shadow">Создать в TickTask</button>
+                <a href="/" class="btn btn-link w-100 text-muted mt-2 text-decoration-none">Отмена</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
