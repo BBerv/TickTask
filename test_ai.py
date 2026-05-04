@@ -1,7 +1,7 @@
 import os
 from groq import Groq
 
-API_KEY = "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"
+API_KEY = "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"
 
 
 def test_groq():
